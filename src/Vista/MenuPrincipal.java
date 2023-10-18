@@ -59,7 +59,7 @@ public class MenuPrincipal extends JFrame{
         JLabelTitulo jt = new JLabelTitulo(
                 60, "Menu Principal", this, "/Imagenes/hogar.png");
         add(jt);
-        ControlMenuPrincipal cmp = new ControlMenuPrincipal(this);
+        cmp = new ControlMenuPrincipal(this);
         jbNuevoUsuario = new JButtonMenu((1000-400)/2, 150, 400, 50, 
                 "Nuevo Usuario", "Ir a crear usuarios", 
                 "/imagenes/agregar-usuario.png", 'C', this);

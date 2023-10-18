@@ -30,11 +30,13 @@ public class ControlActualizarUsuario implements ActionListener, WindowListener{
     
     public ControlActualizarUsuario(ActualizarUsuario obj){
         au = obj;
+        usuarios = au.mp.usuarios;
+        ExisteUsario = false;
     }
     
     @Override
     public void actionPerformed(ActionEvent e) {
-        usuarios = au.mp.usuarios; 
+        //usuarios = au.mp.usuarios; 
         int posicion = 0;
         if (e.getSource().equals(au.jbVolver)) {
             volver();
@@ -43,14 +45,14 @@ public class ControlActualizarUsuario implements ActionListener, WindowListener{
             limpiar();
         }
         if (e.getSource().equals(au.jbConsultar)) {
-            ExisteUsario = false;
+            //ExisteUsario = false;
             String ced = au.jtCedula.getText();
             limpiar();
             volverNoEditables();
             llenarCampos(ced);
             if(ExisteUsario == false)JOptionPane.showMessageDialog(au,
-                        "El usuario a buscar no existe.", "Usuario No Encontrado", posicion);
-            posicion = llenarCampos(ced);
+                        "El usuario a buscar no existe.", "Usuario No Encontrado", 0);
+            //posicion = llenarCampos(ced);
         }
         if (e.getSource().equals(au.jbActualizar)) {
             actualizarDatos(posicion);
@@ -101,89 +103,83 @@ public class ControlActualizarUsuario implements ActionListener, WindowListener{
     
     private int llenarCampos(String ced){
         int posicion = 0;
-        //ArrayList<Usuario> usuarios = cu.mp.usuarios;
             for (int i = 0; i < usuarios.size(); i++) {
-                Usuario usuario = usuarios.get(i);
-                if(ced.equals(usuario.getCedula())){
+                Usuario u = usuarios.get(i);
+                if(ced.equals(u.getCedula())){
                     ExisteUsario = true;
                     posicion = i;
                     volverEditables();
-                    String cedu = usuario.getCedula();
-                    au.jtCedula.setText(cedu);
-                    String nom = usuario.getNombre();
-                    au.jtNom.setText(nom);
-                    String ape = usuario.getApellido();
-                    au.jtApe.setText(ape);
-                    String email = usuario.getEmail();
-                    au.jtEmail.setText(email);
-                    String password = usuario.getPassword();
-                    au.jtPassword.setText(password);
-                    /*String fechaNac = usuario.getFechaNacimiento();
-                    String[] fechaSeparada = fechaNac.split("/");*/
-                    String diaNac = usuario.getDia();
-                    au.jcDia.setSelectedItem(diaNac);
-                    String mesNac  = usuario.getMes();
-                    au.jcMes.setSelectedItem(mesNac);
-                    String yearNac  = usuario.getYear();
-                    au.jcYear.setSelectedItem(yearNac);
-                    String grupoS = usuario.getGrupoSanguineo();
-                    au.jcTipoUsuario.setSelectedItem(grupoS);
-                    String tipoU = usuario.getTipoUsuario();
-                    au.jcTipoUsuario.setSelectedItem(tipoU);
-                    if("Activo".equals(usuario.getEstado())) au.jrActivo.setSelected(true);
+                    au.jtCedula.setText(u.getCedula());
+                    au.jtNom.setText(u.getNombre());
+                    au.jtApe.setText(u.getApellido());
+                    au.jcTipoUsuario.setSelectedItem(u.getTipoUsuario());
+                    au.jcGrupoSanguineo.setSelectedItem(u.getGrupoSanguineo());
+                    au.jcDia.setSelectedItem(u.getDia());
+                    au.jcMes.setSelectedItem(u.getMes());
+                    au.jcYear.setSelectedItem(u.getYear());
+                    au.jtEmail.setText(u.getEmail());
+                    au.jtPassword.setText(u.getPassword());
+                    if("Activo".equals(u.getEstado())) au.jrActivo.setSelected(true);
                     else au.jrInactivo.setSelected(true);
+                    break;
                 }
             }
         return posicion;
     }
     
     private void actualizarDatos(int posicion){
-        String ced = au.jtCedula.getText();
-        String nom = au.jtNom.getText();
-        String ape = au.jtApe.getText();
-        String email = au.jtEmail.getText();
-        String password = au.jtPassword.getText();
-        String dia = (String) au.jcDia.getSelectedItem();
-        String mes = (String) au.jcMes.getSelectedItem();
-        String year = (String) au.jcYear.getSelectedItem();
-        String grupoS = (String) au.jcGrupoSanguineo.getSelectedItem();
-        String tipoU = (String) au.jcTipoUsuario.getSelectedItem();
-        //String fecha = dia + "/" + mes + "/" + year;
-        String estado = "Activo";
-        if(au.jrActivo.isSelected()) estado = "Activo";
-        if(au.jrInactivo.isSelected()) estado = "Inactivo";
-        Usuario usuario = new Usuario(ced, nom, ape, tipoU, grupoS,dia, mes ,year, email, password, estado);
-        //usuarios.set(posicion, usuario); 
-        
-        int resp = JOptionPane.showConfirmDialog(au, 
-                "desea actualizar los datos?", 
-                 "Confirmación", 
-                JOptionPane.YES_NO_OPTION);
-        if (resp == JOptionPane.YES_OPTION) {
-            usuarios.set(posicion, usuario); 
-            int resp2 = JOptionPane.showConfirmDialog(au, 
-                "datos guardados, \n desea actualizar otro usuario?", 
-                 "Confirmación", 
-                JOptionPane.YES_NO_OPTION);
-            if (resp2 == JOptionPane.YES_OPTION) {
-                limpiar();
-                volverNoEditables();
-            }
-            else{
-                volver();
+        if(ExisteUsario){
+            String ced = au.jtCedula.getText();
+            String nom = au.jtNom.getText();
+            String ape = au.jtApe.getText();
+            String email = au.jtEmail.getText();
+            String password = au.jtPassword.getText();
+            String dia = (String) au.jcDia.getSelectedItem();
+            String mes = (String) au.jcMes.getSelectedItem();
+            String year = (String) au.jcYear.getSelectedItem();
+            String grupoS = (String) au.jcGrupoSanguineo.getSelectedItem();
+            String tipoU = (String) au.jcTipoUsuario.getSelectedItem();
+            //String fecha = dia + "/" + mes + "/" + year;
+            String estado = "Activo";
+            if(au.jrActivo.isSelected()) estado = "Activo";
+            if(au.jrInactivo.isSelected()) estado = "Inactivo";
+            Usuario usuario = new Usuario(ced, nom, ape, tipoU, grupoS,dia, mes ,year, email, password, estado);
+            //usuarios.set(posicion, usuario); 
+            
+            int resp = JOptionPane.showConfirmDialog(au, 
+                    "desea actualizar los datos?", 
+                    "Confirmación", 
+                    JOptionPane.YES_NO_OPTION);
+            if (resp == JOptionPane.YES_OPTION) {
+                usuarios.set(posicion, usuario); 
+                int resp2 = JOptionPane.showConfirmDialog(au, 
+                    "datos guardados, \n desea actualizar otro usuario?", 
+                    "Confirmación", 
+                    JOptionPane.YES_NO_OPTION);
+                if (resp2 == JOptionPane.YES_OPTION) {
+                    limpiar();
+                    volverNoEditables();
+                    ExisteUsario = false;
+                }
+                else{
+                    volver();
+                }
+            }else{
+                int resp3 = JOptionPane.showConfirmDialog(au, 
+                    "desea actualizar otro usuario?", 
+                    "Confirmación", 
+                    JOptionPane.YES_NO_OPTION);
+                if (resp3 == JOptionPane.YES_OPTION) {
+                    limpiar();
+                    volverNoEditables();
+                }
+                else{
+                    volver();
+                }
             }
         }else{
-            int resp3 = JOptionPane.showConfirmDialog(au, 
-                "desea actualizar otro usuario?", 
-                 "Confirmación", 
-                JOptionPane.YES_NO_OPTION);
-            if (resp3 == JOptionPane.YES_OPTION) {
-                limpiar();
-                volverNoEditables();
-            }
-            else{
-                volver();
-            }
+            JOptionPane.showMessageDialog(au,
+            "INGRESE PRIMERO LOS DATOS!!"+ "\n Precione Consultar", "¿QUE ESTAS HACIENDO?", 2);
         }
     }
 

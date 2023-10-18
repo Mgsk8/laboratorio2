@@ -12,6 +12,7 @@ package Vista;
 
 import Controlador.ControlActualizarUsuario;
 import Controlador.ControlCrearUsuario;
+import Utilerias.JButtonFuncion;
 import Utilerias.JLabelTitulo;
 import java.awt.Color;
 import java.awt.Cursor;
@@ -199,56 +200,20 @@ public class ActualizarUsuario extends JFrame{
        
         
         
-        ImageIcon volver = new ImageIcon(getClass().getResource("/imagenes/volver.png"));
-        jbVolver = new JButton("Volver al menu",volver);
-        jbVolver.setBounds(50, 400, 200, 80);
-        jbVolver.setMnemonic('V');
-        jbVolver.addActionListener(ccu);
-        jbVolver.setHorizontalTextPosition(SwingConstants.CENTER);//configurar la posición del texto horizontal
-        jbVolver.setVerticalTextPosition(SwingConstants.BOTTOM);//configurar la posición del texto vertical
-        jbVolver.setContentAreaFilled(false);//No pinta el area del botón
-        jbVolver.setBorderPainted(false);//No pinta los bordes
-        jbVolver.setFocusPainted(false);//Desabilita el efecto del botón cuando el cursor se posa sobre el botón
-        jbVolver.setCursor(new Cursor(Cursor.HAND_CURSOR));//permite cambiar el tipo de cursor cuando se posa sobre el botón
+        jbVolver = new JButtonFuncion(60, "Volver al menu", 'v', "/Imagenes/volver.png");
+        jbVolver.addActionListener(cau);
         jp.add(jbVolver);
-        
-        ImageIcon limpiar = new ImageIcon(getClass().getResource("/imagenes/limpiar.png"));
-        jbLimpiar = new JButton("Limpiar", limpiar);
-        jbLimpiar.setBounds(200, 400, 150, 80);
-        jbLimpiar.setMnemonic('L');
+
+        jbLimpiar = new JButtonFuncion(225, "Limpiar", 'L', "/Imagenes/limpiar.png");
         jbLimpiar.addActionListener(cau);
-        jbLimpiar.setHorizontalTextPosition(SwingConstants.CENTER);//configurar la posición del texto horizontal
-        jbLimpiar.setVerticalTextPosition(SwingConstants.BOTTOM);//configurar la posición del texto vertical
-        jbLimpiar.setContentAreaFilled(false);//No pinta el area del botón
-        jbLimpiar.setBorderPainted(false);//No pinta los bordes
-        jbLimpiar.setFocusPainted(false);//Desabilita el efecto del botón cuando el cursor se posa sobre el botón
-        jbLimpiar.setCursor(new Cursor(Cursor.HAND_CURSOR));
         jp.add(jbLimpiar);
-        
-        ImageIcon consultar = new ImageIcon(getClass().getResource("/imagenes/ConsultarConColor.png"));
-        jbConsultar = new JButton("Buscar", consultar);
-        jbConsultar.setBounds(350, 400, 150, 80);
-        jbConsultar.setMnemonic('C');
+
+        jbConsultar = new JButtonFuncion(225+165, "Consultar", 'C', "/Imagenes/ConsultarConColor.png");
         jbConsultar.addActionListener(cau);
-        jbConsultar.setHorizontalTextPosition(SwingConstants.CENTER);//configurar la posición del texto horizontal
-        jbConsultar.setVerticalTextPosition(SwingConstants.BOTTOM);//configurar la posición del texto vertical
-        jbConsultar.setContentAreaFilled(false);//No pinta el area del botón
-        jbConsultar.setBorderPainted(false);//No pinta los bordes
-        jbConsultar.setFocusPainted(false);//Desabilita el efecto del botón cuando el cursor se posa sobre el botón
-        jbConsultar.setCursor(new Cursor(Cursor.HAND_CURSOR));
         jp.add(jbConsultar);
         
-        ImageIcon actualizar = new ImageIcon(getClass().getResource("/imagenes/ActualizarConColor.png"));
-        jbActualizar = new JButton("Actualizar", actualizar);
-        jbActualizar.setBounds(500, 400, 150, 80);
-        jbActualizar.setMnemonic('C');
+        jbActualizar = new JButtonFuncion(225+165+165, "Actualizar", 'A', "/Imagenes/ActualizarConColor.png");
         jbActualizar.addActionListener(cau);
-        jbActualizar.setHorizontalTextPosition(SwingConstants.CENTER);//configurar la posición del texto horizontal
-        jbActualizar.setVerticalTextPosition(SwingConstants.BOTTOM);//configurar la posición del texto vertical
-        jbActualizar.setContentAreaFilled(false);//No pinta el area del botón
-        jbActualizar.setBorderPainted(false);//No pinta los bordes
-        jbActualizar.setFocusPainted(false);//Desabilita el efecto del botón cuando el cursor se posa sobre el botón
-        jbActualizar.setCursor(new Cursor(Cursor.HAND_CURSOR));
         jp.add(jbActualizar);
       
     }

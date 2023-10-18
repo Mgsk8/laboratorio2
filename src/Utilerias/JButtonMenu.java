@@ -33,6 +33,6 @@ public class JButtonMenu extends JButton{
         setMnemonic(letra);
         setToolTipText(mensaje);
         setText(texto);
-        setCursor(new Cursor(Cursor.HAND_CURSOR));
+        setCursor(new Cursor(Cursor.HAND_CURSOR));  
     }
 }
