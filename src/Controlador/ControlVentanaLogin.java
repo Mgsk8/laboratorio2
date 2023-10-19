@@ -29,6 +29,9 @@ public class ControlVentanaLogin implements ActionListener, WindowListener{
         if(e.getSource().equals(vl.jbingresar)){
             evento_validar();
         }
+        if(e.getSource().equals(vl.jtLogin)){
+            vl.jpPassw.requestFocus(); //al precionar enter, pasa el cursur al password
+        }
     }
     private void evento_jtVer() {
         if (vl.jtVer.isSelected()) {

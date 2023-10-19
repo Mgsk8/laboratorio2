@@ -12,7 +12,7 @@ package Modelo;
 public class Usuario {
     String cedula, nombre, apellido, tipoUsuario, grupoSanguineo,dia, mes, year, email, password, estado;
 
-    public Usuario(String cedula, String nombre, String apellido, String tipoUsuario, String grupoSanguineo, String dia, String mes, String year, String email, String password, String estado) {
+    public Usuario(String cedula, String nombre, String apellido, String tipoUsuario, String grupoSanguineo, String dia, String mes, String year, String email, String estado) {
         this.cedula = cedula;
         this.nombre = nombre;
         this.apellido = apellido;
@@ -22,7 +22,6 @@ public class Usuario {
         this.mes = mes;
         this.year = year;
         this.email = email;
-        this.password = password;
         this.estado = estado;
     }
 

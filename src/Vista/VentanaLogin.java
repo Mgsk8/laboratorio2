@@ -58,7 +58,8 @@ public class VentanaLogin extends JFrame{
         add(jlLogin);
 
         jtLogin = new JTextField();
-        jtLogin.setBounds(120, 90, 150, 30);       
+        jtLogin.setBounds(120, 90, 150, 30);     
+        jtLogin.addActionListener(cvl);  
         add(jtLogin);
 
         JLabel jlPass = new JLabel("password");
@@ -79,41 +80,18 @@ public class VentanaLogin extends JFrame{
         jtVer.setFocusPainted(false);//quitar el recuadro del foco del boton
         jtVer.setContentAreaFilled(false);//quita el color de fondo del boton 
         jtVer.addActionListener(cvl);
-        /*jtVer.addActionListener(new ActionListener() {
-
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                // TODO Auto-generated method stub
-                evento_jtVer();
-            } 
-        }); */
         add(jtVer);
 
         jbCancelar = new JButton("Cancelar");
         jbCancelar.setBounds(45, 200, 150, 35);
         jbCancelar.addActionListener(cvl);
-        /*jbCancelar.addActionListener(new ActionListener() {
-
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                // TODO Auto-generated method stub
-                System.exit(0);
-            }
-            
-        });*/
+        
         add(jbCancelar);
 
         jbingresar = new JButton("Ingresar");
         jbingresar.setBounds(205, 200, 150, 35);
         jbingresar.addActionListener(cvl);
-        /*jbingresar.addActionListener(new ActionListener() {
-
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                // TODO Auto-generated method stub
-                evento_validar();
-            }
-        });*/
+        jbingresar.setMnemonic('I');
         add(jbingresar);
     }
     public static void main(String[] args) {

@@ -13,6 +13,8 @@ package Vista;
 import Controlador.ControlCrearUsuario;
 import Utilerias.JButtonFuncion;
 import Utilerias.JLabelTitulo;
+import Utilerias.LimitadorCaracteres;
+
 import java.awt.Color;
 import java.awt.Cursor;
 import java.util.Calendar;
@@ -71,6 +73,7 @@ public class CrearUsuario extends JFrame{
         
         jtCedula = new JTextField();
         jtCedula.setBounds(130, 110, 200, 30);
+        jtCedula.setDocument(new LimitadorCaracteres(jtCedula, 20, 0));
         jp.add(jtCedula);
         
         JLabel jlNom = new JLabel("Nombre:");
@@ -79,6 +82,7 @@ public class CrearUsuario extends JFrame{
         
         jtNom = new JTextField();
         jtNom.setBounds(130, 160, 200, 30);
+        jtNom.setDocument(new LimitadorCaracteres(jtNom, 20, 1));
         jp.add(jtNom);
         
         JLabel jlApe = new JLabel("Apellido:");
@@ -87,6 +91,7 @@ public class CrearUsuario extends JFrame{
         
         jtApe = new JTextField();
         jtApe.setBounds(130, 210, 200, 30);
+        jtApe.setDocument(new LimitadorCaracteres(jtApe, 20, 1));
         jp.add(jtApe);
         
         JLabel jlEmail = new JLabel("Email:");
@@ -97,27 +102,21 @@ public class CrearUsuario extends JFrame{
         jtEmail.setBounds(130, 260, 200, 30);
         jp.add(jtEmail);
         
-        JLabel jlPassword = new JLabel("Password:");
-        jlPassword.setBounds(40, 310, 120, 30);
-        jp.add(jlPassword);
-        
-        jtPassword = new JTextField();
-        jtPassword.setBounds(130, 310, 200, 30);
-        jp.add(jtPassword);
         
         JLabel jlTipoUsario = new JLabel("Tipo de usuario:");
         jlTipoUsario.setBounds(370, 110, 150, 30);
         jp.add(jlTipoUsario);
-        
-        JLabel jlGrupoSanguineo = new JLabel("Grupo Sanguineo:");
-        jlGrupoSanguineo.setBounds(370, 160, 150, 30);
-        jp.add(jlGrupoSanguineo);
-        
+
         jcTipoUsuario = new JComboBox<>();
         String tipoUsuario[] = {"Administrador", "Supervisor", "Entrenador", "Recepcionista", "Cliente"};
         for (int i = 0; i < tipoUsuario.length; i++) {
             jcTipoUsuario.addItem(tipoUsuario[i]);
         }
+        
+        JLabel jlGrupoSanguineo = new JLabel("Grupo Sanguineo:");
+        jlGrupoSanguineo.setBounds(370, 160, 150, 30);
+        jp.add(jlGrupoSanguineo);
+        
         
         jcGrupoSanguineo = new JComboBox<>();
         String grupoSanguineo[] = {"A+","O+","B+","AB+","A-","O-","B-","AB-"};

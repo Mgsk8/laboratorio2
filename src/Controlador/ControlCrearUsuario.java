@@ -39,14 +39,13 @@ public class ControlCrearUsuario implements ActionListener, WindowListener{
             String nom = cu.jtNom.getText();
             String ape = cu.jtApe.getText();
             String email = cu.jtEmail.getText();
-            String password = cu.jtPassword.getText();
             String dia = (String) cu.jcDia.getSelectedItem();
             String mes = (String) cu.jcMes.getSelectedItem();
             String year = (String) cu.jcYear.getSelectedItem();
             String grupoS = (String) cu.jcGrupoSanguineo.getSelectedItem();
             String tipoU = (String) cu.jcTipoUsuario.getSelectedItem();
             String estado = "Activo";
-            Usuario usuario = new Usuario(ced, nom, ape, tipoU, grupoS,dia, mes, year, email, password, estado);
+            Usuario usuario = new Usuario(ced, nom, ape, tipoU, grupoS,dia, mes, year, email, estado);
             cu.mp.usuarios.add(usuario);
             int resp = JOptionPane.showConfirmDialog(cu, 
                     "Se guardaron los datos de la persona.\nDesea ingresar otro usuario?", 
@@ -70,7 +69,6 @@ public class ControlCrearUsuario implements ActionListener, WindowListener{
         cu.jcMes.setSelectedItem("1");
         cu.jcYear.setSelectedItem(cu.yearActual);
         cu.jtEmail.setText("");
-        cu.jtPassword.setText("");
         cu.jtApe.requestFocus();
     }
 

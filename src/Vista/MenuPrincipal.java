@@ -63,14 +63,12 @@ public class MenuPrincipal extends JFrame{
         jbNuevoUsuario = new JButtonMenu((1000-400)/2, 150, 400, 50, 
                 "Nuevo Usuario", "Ir a crear usuarios", 
                 "/imagenes/agregar-usuario.png", 'C', this);
-        jbNuevoUsuario.setBorderPainted(false);
-        jbNuevoUsuario.setFocusPainted(false);
         jbNuevoUsuario.addActionListener(cmp);
         add(jbNuevoUsuario);
         
         jbConsultarUsuario = new JButtonMenu((1000-400)/2, 250, 400, 50, 
                 "Consultar usuario", "Ir a consulta de usuarios", 
-                "/imagenes/Consultar.png", 'C', this);
+                "/imagenes/Consultar.png", 'C', this);    
         jbConsultarUsuario.addActionListener(cmp);
         add(jbConsultarUsuario);
         

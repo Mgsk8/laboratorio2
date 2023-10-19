@@ -14,6 +14,8 @@ import Controlador.ControlActualizarUsuario;
 import Controlador.ControlCrearUsuario;
 import Utilerias.JButtonFuncion;
 import Utilerias.JLabelTitulo;
+import Utilerias.LimitadorCaracteres;
+
 import java.awt.Color;
 import java.awt.Cursor;
 import java.util.Calendar;
@@ -75,6 +77,7 @@ public class ActualizarUsuario extends JFrame{
         
         jtCedula = new JTextField();
         jtCedula.setBounds(130, 50, 200, 30);
+        jtCedula.setDocument(new LimitadorCaracteres(jtCedula, 20, 0));
         jp.add(jtCedula);
         
         JLabel jlNom = new JLabel("Nombre:");
@@ -83,6 +86,7 @@ public class ActualizarUsuario extends JFrame{
         
         jtNom = new JTextField();
         jtNom.setBounds(130, 100, 200, 30);
+        jtNom.setDocument(new LimitadorCaracteres(jtNom, 20, 1));
         jtNom.setEditable(false);
         jp.add(jtNom);
         
@@ -92,6 +96,7 @@ public class ActualizarUsuario extends JFrame{
         
         jtApe = new JTextField();
         jtApe.setBounds(130, 150, 200, 30);
+        jtApe.setDocument(new LimitadorCaracteres(jtApe, 20, 1));
         jtApe.setEditable(false);
         jp.add(jtApe);
         
@@ -103,15 +108,6 @@ public class ActualizarUsuario extends JFrame{
         jtEmail.setBounds(130, 200, 200, 30);
         jtEmail.setEditable(false);
         jp.add(jtEmail);
-        
-        JLabel jlPassword = new JLabel("Password:");
-        jlPassword.setBounds(40, 250, 120, 30);
-        jp.add(jlPassword);
-        
-        jtPassword = new JTextField();
-        jtPassword.setBounds(130, 250, 200, 30);
-        jtPassword.setEditable(false);
-        jp.add(jtPassword);
         
         jrActivo = new JRadioButton("Activo");
         jrActivo.setBounds(40, 300,120,30);
