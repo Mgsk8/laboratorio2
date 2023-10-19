@@ -102,6 +102,13 @@ public class CrearUsuario extends JFrame{
         jtEmail.setBounds(130, 260, 200, 30);
         jp.add(jtEmail);
         
+        JLabel jlPassword = new JLabel("Password:");
+        jlPassword.setBounds(40, 310, 120, 30);
+        jp.add(jlPassword);
+
+        jtPassword = new JTextField();
+        jtPassword.setBounds(130, 310, 200, 30);
+        jp.add(jtPassword);
         
         JLabel jlTipoUsario = new JLabel("Tipo de usuario:");
         jlTipoUsario.setBounds(370, 110, 150, 30);

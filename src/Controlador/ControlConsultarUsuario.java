@@ -52,7 +52,8 @@ public class ControlConsultarUsuario implements ActionListener, WindowListener{
         cu.jcMes.setSelectedItem("1");
         cu.jcYear.setSelectedItem(cu.yearActual);
         cu.jtEmail.setText("");
-        cu.jtApe.requestFocus();
+        cu.jtPassword.setText("");
+        cu.jtCedula.requestFocus();
     }
 
     private void volver() {
@@ -83,6 +84,7 @@ public class ControlConsultarUsuario implements ActionListener, WindowListener{
                 cu.jcMes.setSelectedItem(u.getMes());
                 cu.jcYear.setSelectedItem(u.getYear());
                 cu.jtEmail.setText(u.getEmail());
+                //cu.jtPassword.setText(u.getPassword());
                 if("Activo".equals(u.getEstado())) cu.jrActivo.setSelected(true);
                 else cu.jrInactivo.setSelected(true);
             }

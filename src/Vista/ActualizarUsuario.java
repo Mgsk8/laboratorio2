@@ -108,6 +108,15 @@ public class ActualizarUsuario extends JFrame{
         jtEmail.setBounds(130, 200, 200, 30);
         jtEmail.setEditable(false);
         jp.add(jtEmail);
+
+        JLabel jlPassword = new JLabel("Password:");
+        jlPassword.setBounds(40, 250, 120, 30);
+        jp.add(jlPassword);
+
+        jtPassword = new JTextField();
+        jtPassword.setBounds(130, 250, 200, 30);
+        jtPassword.setEditable(false);
+        jp.add(jtPassword);
         
         jrActivo = new JRadioButton("Activo");
         jrActivo.setBounds(40, 300,120,30);

@@ -69,6 +69,7 @@ public class ControlActualizarUsuario implements ActionListener, WindowListener{
         au.jcMes.setSelectedItem("1");
         au.jcYear.setSelectedItem(au.yearActual);
         au.jtEmail.setText("");
+        au.jtPassword.setText("");
         au.jtApe.requestFocus();
     }
     
@@ -76,6 +77,7 @@ public class ControlActualizarUsuario implements ActionListener, WindowListener{
         au.jtNom.setEditable(true);
         au.jtApe.setEditable(true);
         au.jtEmail.setEditable(true);
+        au.jtPassword.setEditable(true);
         au.jcTipoUsuario.setEnabled(true);
         au.jcGrupoSanguineo.setEnabled(true);
         au.jcDia.setEnabled(true);
@@ -89,6 +91,7 @@ public class ControlActualizarUsuario implements ActionListener, WindowListener{
         au.jtNom.setEditable(false);
         au.jtApe.setEditable(false);
         au.jtEmail.setEditable(false);
+        au.jtPassword.setEditable(false);
         au.jcTipoUsuario.setEnabled(false);
         au.jcGrupoSanguineo.setEnabled(false);
         au.jcDia.setEnabled(false);
@@ -115,6 +118,7 @@ public class ControlActualizarUsuario implements ActionListener, WindowListener{
                     au.jcMes.setSelectedItem(u.getMes());
                     au.jcYear.setSelectedItem(u.getYear());
                     au.jtEmail.setText(u.getEmail());
+                    au.jtPassword.setText(u.getPassword());
                     if("Activo".equals(u.getEstado())) au.jrActivo.setSelected(true);
                     else au.jrInactivo.setSelected(true);
                     break;
@@ -129,6 +133,7 @@ public class ControlActualizarUsuario implements ActionListener, WindowListener{
             String nom = au.jtNom.getText();
             String ape = au.jtApe.getText();
             String email = au.jtEmail.getText();
+            String password = au.jtPassword.getText();
             String dia = (String) au.jcDia.getSelectedItem();
             String mes = (String) au.jcMes.getSelectedItem();
             String year = (String) au.jcYear.getSelectedItem();
@@ -138,7 +143,7 @@ public class ControlActualizarUsuario implements ActionListener, WindowListener{
             String estado = "Activo";
             if(au.jrActivo.isSelected()) estado = "Activo";
             if(au.jrInactivo.isSelected()) estado = "Inactivo";
-            Usuario usuario = new Usuario(ced, nom, ape, tipoU, grupoS,dia, mes ,year, email, estado);
+            Usuario usuario = new Usuario(ced, nom, ape, tipoU, grupoS,dia, mes ,year, email, password, estado);
             //usuarios.set(posicion, usuario); 
             
             int resp = JOptionPane.showConfirmDialog(au, 
