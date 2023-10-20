@@ -49,7 +49,6 @@ public class ControlVentanaLogin implements ActionListener, WindowListener{
         char caracteres[] = vl.jpPassw.getPassword(); //obtener los caracteres escritos como un arreglo de tipo char[]
         String passw = String.valueOf(caracteres);//Convertir el arreglo de char a String
 
-        System.out.println(login +" " + passw); //mostrar el password
 
         if(login.equals("") || passw.equals("")){
             JOptionPane.showMessageDialog(vl, "Login y/o password no pueden ser vacios");
