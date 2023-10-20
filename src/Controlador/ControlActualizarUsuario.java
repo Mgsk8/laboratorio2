@@ -19,6 +19,9 @@ import Vista.ConsultarUsuario;
 import Vista.CrearUsuario;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.FileWriter;
 import java.util.ArrayList;
 
 public class ControlActualizarUsuario implements ActionListener, WindowListener{
@@ -37,7 +40,7 @@ public class ControlActualizarUsuario implements ActionListener, WindowListener{
     @Override
     public void actionPerformed(ActionEvent e) {
         //usuarios = au.mp.usuarios; 
-        int posicion = 0;
+        //int posicion = 0;
         if (e.getSource().equals(au.jbVolver)) {
             volver();
         }
@@ -55,7 +58,7 @@ public class ControlActualizarUsuario implements ActionListener, WindowListener{
             //posicion = llenarCampos(ced);
         }
         if (e.getSource().equals(au.jbActualizar)) {
-            actualizarDatos(posicion);
+            actualizarDatos();
         }
     }
 
@@ -101,33 +104,54 @@ public class ControlActualizarUsuario implements ActionListener, WindowListener{
         au.jrInactivo.setEnabled(false);
     }
     
-    private int llenarCampos(String ced){
-        int posicion = 0;
-            for (int i = 0; i < usuarios.size(); i++) {
-                Usuario u = usuarios.get(i);
-                if(ced.equals(u.getCedula())){
-                    ExisteUsario = true;
-                    posicion = i;
-                    volverEditables();
-                    au.jtCedula.setText(u.getCedula());
-                    au.jtNom.setText(u.getNombre());
-                    au.jtApe.setText(u.getApellido());
-                    au.jcTipoUsuario.setSelectedItem(u.getTipoUsuario());
-                    au.jcGrupoSanguineo.setSelectedItem(u.getGrupoSanguineo());
-                    au.jcDia.setSelectedItem(u.getDia());
-                    au.jcMes.setSelectedItem(u.getMes());
-                    au.jcYear.setSelectedItem(u.getYear());
-                    au.jtEmail.setText(u.getEmail());
-                    au.jtPassword.setText(u.getPassword());
-                    if("Activo".equals(u.getEstado())) au.jrActivo.setSelected(true);
-                    else au.jrInactivo.setSelected(true);
-                    break;
+    private void llenarCampos(String ced){
+        //int posicion = 0;
+        FileReader fr = null;
+        boolean error = false;
+        try {
+            fr = new FileReader("Usuarios.csv");
+        } catch (Exception e) {
+            // TODO: handle exception
+            error = true;
+            JOptionPane.showMessageDialog(au, e + "\n\n Error al abrir el archivo");
+        }
+        if (!error) {
+            BufferedReader br = new BufferedReader(fr);
+            String linea = "";
+            String tokens[];
+            boolean existe = false;
+            
+            try {
+               while ((linea = br.readLine()) != null) {
+                    tokens = linea.split(";");
+                    if (tokens[0].equals(ced)) {
+                        existe = true;
+                        au.jtCedula.setText(tokens[0]);
+                        au.jtNom.setText(tokens[1]);
+                        au.jtApe.setText(tokens[2]);
+                        au.jcTipoUsuario.setSelectedItem(tokens[3]);
+                        au.jcGrupoSanguineo.setSelectedItem(tokens[4]);
+                        au.jcDia.setSelectedItem(tokens[5]);
+                        au.jcMes.setSelectedItem(tokens[6]);
+                        au.jcYear.setSelectedItem(tokens[7]);
+                        au.jtEmail.setText(tokens[8]);
+                        au.jtPassword.setText(tokens[9]);
+                        if("Activo".equals(tokens[10])) au.jrActivo.setSelected(true);
+                        else au.jrInactivo.setSelected(true);
+                        break;
+                    }
+                } 
+                if(!existe){
+                    JOptionPane.showMessageDialog(au, "Estudiante con cedula " + ced + " no existe");
                 }
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(au, e + "\n\nError al leer el archivo", "Error", 0);
             }
-        return posicion;
+           
+        }
     }
     
-    private void actualizarDatos(int posicion){
+    private void actualizarDatos(){
         if(ExisteUsario){
             String ced = au.jtCedula.getText();
             String nom = au.jtNom.getText();
@@ -151,7 +175,13 @@ public class ControlActualizarUsuario implements ActionListener, WindowListener{
                     "Confirmación", 
                     JOptionPane.YES_NO_OPTION);
             if (resp == JOptionPane.YES_OPTION) {
-                usuarios.set(posicion, usuario); 
+                try {
+                    
+                } catch (Exception e) {
+                    // TODO: handle exception
+                }
+
+                //usuarios.set(posicion, usuario); 
                 int resp2 = JOptionPane.showConfirmDialog(au, 
                     "datos guardados, \n desea actualizar otro usuario?", 
                     "Confirmación", 

@@ -18,6 +18,8 @@ import Vista.ConsultarUsuario;
 import Vista.CrearUsuario;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
+import java.io.BufferedReader;
+import java.io.FileReader;
 
 public class ControlConsultarUsuario implements ActionListener, WindowListener{
 
@@ -70,24 +72,48 @@ public class ControlConsultarUsuario implements ActionListener, WindowListener{
        if(respuesta == JOptionPane.YES_OPTION) System.exit(0);
     }
     
-    public void buscarUsario(String obj){
-        String buscar = obj;
-        for (int i = 0; i < cu.mp.usuarios.size(); i++) {
-            Usuario u = cu.mp.usuarios.get(i);
-            if(buscar.equals(u.getCedula())){
-                cu.jtCedula.setText(u.getCedula());
-                cu.jtNom.setText(u.getNombre());
-                cu.jtApe.setText(u.getApellido());
-                cu.jcTipoUsuario.setSelectedItem(u.getTipoUsuario());
-                cu.jcGrupoSanguineo.setSelectedItem(u.getGrupoSanguineo());
-                cu.jcDia.setSelectedItem(u.getDia());
-                cu.jcMes.setSelectedItem(u.getMes());
-                cu.jcYear.setSelectedItem(u.getYear());
-                cu.jtEmail.setText(u.getEmail());
-                //cu.jtPassword.setText(u.getPassword());
-                if("Activo".equals(u.getEstado())) cu.jrActivo.setSelected(true);
-                else cu.jrInactivo.setSelected(true);
+    public void buscarUsario(String ced){
+        FileReader fr = null;
+        boolean error = false;
+        try {
+            fr = new FileReader("Usuarios.csv");
+        } catch (Exception e) {
+            // TODO: handle exception
+            error = true;
+            JOptionPane.showMessageDialog(cu, e + "\n\n Error al abrir el archivo");
+        }
+        if (!error) {
+            BufferedReader br = new BufferedReader(fr);
+            String linea = "";
+            String tokens[];
+            boolean existe = false;
+            try {
+               while ((linea = br.readLine()) != null) {
+                    tokens = linea.split(";");
+                    if (tokens[0].equals(ced)) {
+                        existe = true;
+                        cu.jtCedula.setText(tokens[0]);
+                        cu.jtNom.setText(tokens[1]);
+                        cu.jtApe.setText(tokens[2]);
+                        cu.jcTipoUsuario.setSelectedItem(tokens[3]);
+                        cu.jcGrupoSanguineo.setSelectedItem(tokens[4]);
+                        cu.jcDia.setSelectedItem(tokens[5]);
+                        cu.jcMes.setSelectedItem(tokens[6]);
+                        cu.jcYear.setSelectedItem(tokens[7]);
+                        cu.jtEmail.setText(tokens[8]);
+                        //cu.jtPassword.setText(u.getPassword());
+                        if("Activo".equals(tokens[10])) cu.jrActivo.setSelected(true);
+                        else cu.jrInactivo.setSelected(true);
+                        break;
+                    }
+                } 
+                if(!existe){
+                    JOptionPane.showMessageDialog(cu, "Estudiante con cedula " + ced + " no existe");
+                }
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(cu, e + "\n\nError al leer el archivo", "Error", 0);
             }
+           
         }
     }
 

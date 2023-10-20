@@ -17,6 +17,11 @@ import Modelo.Usuario;
 import Vista.CrearUsuario;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
 
 public class ControlCrearUsuario implements ActionListener, WindowListener{
 
@@ -35,29 +40,94 @@ public class ControlCrearUsuario implements ActionListener, WindowListener{
             limpiar();
         }
         if (e.getSource().equals(cu.jbGuardar)) {
-            String ced = cu.jtCedula.getText();
-            String nom = cu.jtNom.getText();
-            String ape = cu.jtApe.getText();
-            String email = cu.jtEmail.getText();
-            String password = cu.jtPassword.getText();
-            String dia = (String) cu.jcDia.getSelectedItem();
-            String mes = (String) cu.jcMes.getSelectedItem();
-            String year = (String) cu.jcYear.getSelectedItem();
-            String grupoS = (String) cu.jcGrupoSanguineo.getSelectedItem();
-            String tipoU = (String) cu.jcTipoUsuario.getSelectedItem();
-            String estado = "Activo";
-            Usuario usuario = new Usuario(ced, nom, ape, tipoU, grupoS,dia, mes, year, email, password, estado);
-            cu.mp.usuarios.add(usuario);
-            int resp = JOptionPane.showConfirmDialog(cu, 
-                    "Se guardaron los datos de la persona.\nDesea ingresar otro usuario?", 
-                    "Confirmación", 
-                    JOptionPane.YES_NO_OPTION);
-            if (resp == JOptionPane.YES_OPTION) {
-                limpiar();
-            }else{
-                volver();
+            FileWriter fw = null;
+            Boolean error = false;
+            try {
+                fw = new FileWriter("Usuarios.csv", true);
+            } catch (Exception a) {
+                // TODO: handle exception
+                error = true;
+                JOptionPane.showMessageDialog(cu, a + "\n\n Error al tratar de crear el archivo", "error", 0);
+            }
+            if (!error) {
+                String ced = cu.jtCedula.getText();
+                if (consultar_x_ced(ced)) {
+                    JOptionPane.showMessageDialog(cu, "Usuario con cedula " + ced + " ya existe");
+                }else{
+                    String nom = cu.jtNom.getText();
+                    String ape = cu.jtApe.getText();
+                    String email = cu.jtEmail.getText();
+                    String password = cu.jtPassword.getText();
+                    String dia = (String) cu.jcDia.getSelectedItem();
+                    String mes = (String) cu.jcMes.getSelectedItem();
+                    String year = (String) cu.jcYear.getSelectedItem();
+                    String grupoS = (String) cu.jcGrupoSanguineo.getSelectedItem();
+                    String tipoU = (String) cu.jcTipoUsuario.getSelectedItem();
+                    String estado = "Activo";
+                    Usuario usuario = new Usuario(ced, nom, ape, tipoU, grupoS,dia, mes, year, email, password, estado);
+                    try {
+                        fw.write(usuario + "\r\n");
+                        int resp = JOptionPane.showConfirmDialog(cu, 
+                            "Se guardaron los datos de la persona.\nDesea ingresar otro usuario?", 
+                            "Confirmación", JOptionPane.YES_NO_OPTION);
+                        if (resp == JOptionPane.YES_OPTION) {
+                            limpiar();
+                        }else{
+                            volver();
+                        }
+                    } catch (Exception a) {
+                        // TODO: handle exception
+                        JOptionPane.showMessageDialog(cu, a + "\n\n Error al tratar de guardar el archivo", "error", 0);
+                    }
+                    try {
+                        fw.close();
+                    } catch (IOException a) {
+                        System.out.println("Error al tratar de cerrar el archivo");
+                    }
+                }
+                
             }
         }
+        
+    }
+    public boolean consultar_x_ced(String ced){
+        FileReader fr = null;// permite leer el archivo
+        boolean error = false;
+        boolean existe = false;
+        try {
+            fr = new FileReader("Usuarios.csv");
+        } catch (Exception e) {
+            error = true;
+            JOptionPane.showMessageDialog(null, 
+                   e + "\n\nError al abrir el archivo"); 
+        }
+        if (!error) {
+            BufferedReader br = new BufferedReader(fr);//clase que se utiliza para leer texto
+            String linea = "";
+            String[] tokens;            
+            
+            try {
+                while ((linea=br.readLine()) != null) { //readLine() es un método utilizado para leer una línea de texto                   
+                    //System.out.println(linea);
+                    tokens = linea.split(";");//divir los caracteres 
+                    //System.out.println(tokens[0]);
+                    if(tokens[0].equals(ced)){
+                        existe = true;                        
+                        break; // romper el while, para que no siga buscando en el archivo
+                    }
+                }// fin while                
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(null, 
+                   e + "\n\nError al leer el archivo"); 
+            }
+            try {
+                fr.close();
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(null, 
+                   e + "\n\nError al cerrar el archivo"); 
+            }
+        }
+        return existe;
     }
 
     private void limpiar() {

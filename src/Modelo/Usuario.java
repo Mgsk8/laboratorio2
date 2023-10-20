@@ -69,4 +69,10 @@ public class Usuario {
         return estado;
     }
 
+    @Override
+    public String toString() {
+        return cedula + ";" + nombre + ";" + apellido + ";"
+            + tipoUsuario + ";" + grupoSanguineo + ";" + dia + ";" + mes + ";"+ year + ";" + email + ";" + password + ";" + estado;
+    }
+
 }
