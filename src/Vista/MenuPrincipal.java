@@ -29,7 +29,7 @@ import javax.swing.JPanel;
 
 public class MenuPrincipal extends JFrame{
 
-    public JButton jbNuevoUsuario, jbVentanaListado, jbConsultarUsuario, jbActualizar;
+    public JButton jbNuevoUsuario, jbVentanaListado, jbConsultarUsuario,jbEstadistica, jbListados, jbActualizar;
     public ArrayList<Usuario> usuarios = new ArrayList<>();
     ControlMenuPrincipal cmp;
     
@@ -60,23 +60,35 @@ public class MenuPrincipal extends JFrame{
                 60, "Menu Principal", this, "/Imagenes/hogar.png");
         add(jt);
         cmp = new ControlMenuPrincipal(this);
-        jbNuevoUsuario = new JButtonMenu((1000-400)/2, 150, 400, 50, 
+        jbNuevoUsuario = new JButtonMenu(60, 150, 400, 50, 
                 "Nuevo Usuario", "Ir a crear usuarios", 
                 "/imagenes/agregar-usuario.png", 'C', this);
         jbNuevoUsuario.addActionListener(cmp);
         add(jbNuevoUsuario);
         
-        jbConsultarUsuario = new JButtonMenu((1000-400)/2, 250, 400, 50, 
+        jbConsultarUsuario = new JButtonMenu(490, 150, 400, 50, 
                 "Consultar usuario", "Ir a consulta de usuarios", 
                 "/imagenes/Consultar.png", 'C', this);    
         jbConsultarUsuario.addActionListener(cmp);
         add(jbConsultarUsuario);
         
-        jbActualizar = new JButtonMenu((1000-400)/2, 350, 400, 50, 
+        jbListados = new JButtonMenu(60, 250, 400, 50, 
+                "Listados", "Ir a Listado Usuarios", 
+                "/imagenes/Listado.png", 'l', this);
+        jbListados.addActionListener(cmp);
+        add(jbListados);
+
+        jbActualizar = new JButtonMenu(490, 250, 400, 50, 
                 "Actualizar Usuario", "Ir a actualizacion de usuarios", 
                 "/imagenes/Actualizar.png", 'A', this);
         jbActualizar.addActionListener(cmp);
         add(jbActualizar);
+        
+        jbEstadistica = new JButtonMenu((1000-400)/2, 350, 400, 50,
+                "Estadisticas", "Ir a Estadiscas", 
+                "/imagenes/Statistic-icon.png", 'A', this);
+        jbEstadistica.addActionListener(cmp);
+        add(jbEstadistica);
         
         jbAcerca = new JButtonMenu((1000-400)/2, 450, 400, 50, 
                 "Acerca de...", "Ir a Acerca de", 

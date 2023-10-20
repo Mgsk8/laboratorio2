@@ -17,6 +17,7 @@ import javax.swing.JTextField;
 import javax.swing.JToggleButton;
 
 import Controlador.ControlVentanaLogin;
+import Utilerias.LimitadorCaracteres;
 
 public class VentanaLogin extends JFrame{
     
@@ -58,7 +59,8 @@ public class VentanaLogin extends JFrame{
         add(jlLogin);
 
         jtLogin = new JTextField();
-        jtLogin.setBounds(120, 90, 150, 30);     
+        jtLogin.setBounds(120, 90, 150, 30);
+        jtLogin.setDocument(new LimitadorCaracteres(jtLogin, 30, ABORT));   
         jtLogin.addActionListener(cvl);  
         add(jtLogin);
 

@@ -13,6 +13,8 @@ import Vista.AcercaDe;
 import Vista.ActualizarUsuario;
 import Vista.ConsultarUsuario;
 import Vista.CrearUsuario;
+import Vista.Listados;
+
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import Vista.MenuPrincipal;
@@ -20,15 +22,14 @@ import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
 import javax.swing.JOptionPane;
 
-public class ControlMenuPrincipal implements ActionListener, WindowListener{
+public class ControlMenuPrincipal implements ActionListener, WindowListener {
 
-    MenuPrincipal mp; //crea un obj de la clase que controla
-    
-    
-    public ControlMenuPrincipal(MenuPrincipal obj){
-        mp = obj; // Guarda el objeto que recibe de MenuPrincipal en la variable antes creado        
+    MenuPrincipal mp; // crea un obj de la clase que controla
+
+    public ControlMenuPrincipal(MenuPrincipal obj) {
+        mp = obj; // Guarda el objeto que recibe de MenuPrincipal en la variable antes creado
     }
-    
+
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getSource().equals(mp.jbNuevoUsuario)) {
@@ -39,25 +40,32 @@ public class ControlMenuPrincipal implements ActionListener, WindowListener{
             AcercaDe ad = new AcercaDe(mp);
             mp.setVisible(true);
         }
-        
+
         if (e.getSource().equals(mp.jbConsultarUsuario)) {
-            //System.out.println("Clic en jbGrafica");
+            // System.out.println("Clic en jbGrafica");
             ConsultarUsuario cu = new ConsultarUsuario(mp);
             mp.setVisible(false);
         }
+        if (e.getSource().equals(mp.jbListados)) {
+            // System.out.println("Clic en jbGrafica");
+            Listados l = new Listados(mp);
+            mp.setVisible(false);
+        }
         if (e.getSource().equals(mp.jbActualizar)) {
-            //System.out.println("Clic en jbGrafica");
+            // System.out.println("Clic en jbGrafica");
             ActualizarUsuario au = new ActualizarUsuario(mp);
             mp.setVisible(false);
         }
     }
-    public void evento_salir(){
-       int respuesta = JOptionPane.showConfirmDialog(mp,
-               "¿Desea salir de la aplicación?",
-               "Confirmación", 
-               JOptionPane.YES_NO_OPTION);
-       if(respuesta == JOptionPane.YES_OPTION) System.exit(0);
-    }    
+
+    public void evento_salir() {
+        int respuesta = JOptionPane.showConfirmDialog(mp,
+                "¿Desea salir de la aplicación?",
+                "Confirmación",
+                JOptionPane.YES_NO_OPTION);
+        if (respuesta == JOptionPane.YES_OPTION)
+            System.exit(0);
+    }
 
     @Override
     public void windowOpened(WindowEvent e) {
@@ -91,6 +99,6 @@ public class ControlMenuPrincipal implements ActionListener, WindowListener{
 
     @Override
     public void windowDeactivated(WindowEvent e) {
-    
+
     }
 }
