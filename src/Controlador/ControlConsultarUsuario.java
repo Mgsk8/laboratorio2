@@ -108,7 +108,7 @@ public class ControlConsultarUsuario implements ActionListener, WindowListener{
                     }
                 } 
                 if(!existe){
-                    JOptionPane.showMessageDialog(cu, "Estudiante con cedula " + ced + " no existe");
+                    JOptionPane.showMessageDialog(cu, "Usuario con cedula " + ced + " no existe");
                 }
             } catch (Exception e) {
                 JOptionPane.showMessageDialog(cu, e + "\n\nError al leer el archivo", "Error", 0);

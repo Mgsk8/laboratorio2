@@ -261,65 +261,6 @@ public class ControlActualizarUsuario implements ActionListener, WindowListener 
             }
 
         }
-        /*
-         * if(ExisteUsario){
-         * String ced = au.jtCedula.getText();
-         * String nom = au.jtNom.getText();
-         * String ape = au.jtApe.getText();
-         * String email = au.jtEmail.getText();
-         * String password = au.jtPassword.getText();
-         * String dia = (String) au.jcDia.getSelectedItem();
-         * String mes = (String) au.jcMes.getSelectedItem();
-         * String year = (String) au.jcYear.getSelectedItem();
-         * String grupoS = (String) au.jcGrupoSanguineo.getSelectedItem();
-         * String tipoU = (String) au.jcTipoUsuario.getSelectedItem();
-         * //String fecha = dia + "/" + mes + "/" + year;
-         * String estado = "Activo";
-         * if(au.jrActivo.isSelected()) estado = "Activo";
-         * if(au.jrInactivo.isSelected()) estado = "Inactivo";
-         * Usuario usuario = new Usuario(ced, nom, ape, tipoU, grupoS,dia, mes ,year,
-         * email, password, estado);
-         * //usuarios.set(posicion, usuario);
-         * 
-         * int resp = JOptionPane.showConfirmDialog(au,
-         * "desea actualizar los datos?",
-         * "Confirmación",
-         * JOptionPane.YES_NO_OPTION);
-         * if (resp == JOptionPane.YES_OPTION) {
-         * 
-         * 
-         * //usuarios.set(posicion, usuario);
-         * int resp2 = JOptionPane.showConfirmDialog(au,
-         * "datos guardados, \n desea actualizar otro usuario?",
-         * "Confirmación",
-         * JOptionPane.YES_NO_OPTION);
-         * if (resp2 == JOptionPane.YES_OPTION) {
-         * limpiar();
-         * volverNoEditables();
-         * ExisteUsario = false;
-         * }
-         * else{
-         * volver();
-         * }
-         * }else{
-         * int resp3 = JOptionPane.showConfirmDialog(au,
-         * "desea actualizar otro usuario?",
-         * "Confirmación",
-         * JOptionPane.YES_NO_OPTION);
-         * if (resp3 == JOptionPane.YES_OPTION) {
-         * limpiar();
-         * volverNoEditables();
-         * }
-         * else{
-         * volver();
-         * }
-         * }
-         * }else{
-         * JOptionPane.showMessageDialog(au,
-         * "INGRESE PRIMERO LOS DATOS!!"+ "\n Precione Consultar",
-         * "¿QUE ESTAS HACIENDO?", 2);
-         * }
-         */
     }
 
     private void volver() {
