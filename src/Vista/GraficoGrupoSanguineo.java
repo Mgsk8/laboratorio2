@@ -1,3 +1,14 @@
+/*
+Proposito: Muestra en pantalla un gráfico circular o de torta rotatorio donde
+se muestran los porcentajes de los usuario por su tipo de sangre.
+@author 
+    Jhon Alex Rodríguez Benítez - 2264363
+    Miguel Angel Escobar Marín - 2264305
+    John Alejandro Vallarino Cruz - 2264332
+Fecha de ultima modificacion  20/10/2023
+version: 1.1
+*/
+
 package Vista;
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartPanel;
@@ -5,9 +16,9 @@ import org.jfree.chart.JFreeChart;
 import org.jfree.chart.plot.PiePlot3D;
 import org.jfree.data.general.DefaultPieDataset;
 
+import Controlador.ControlGraficoGrupoSanguineo;
 import java.awt.Color;
 import java.io.BufferedReader;
-import java.io.File;
 import java.io.FileReader;
 
 import javax.swing.JFrame;
@@ -16,14 +27,19 @@ import javax.swing.JOptionPane;
 public class GraficoGrupoSanguineo extends JFrame {
 
     JFreeChart chart;
+    public Graficos g;
+    public ControlGraficoGrupoSanguineo cggs;
 
-    public GraficoGrupoSanguineo() {
+    public GraficoGrupoSanguineo(Graficos obj) {
         super("GRUPO SANGUINEO USUARIOS");
+        g = obj;
         setSize(800, 600);
         setLayout(null);
         setResizable(false);
         setLocationRelativeTo(null);
-        setDefaultCloseOperation(EXIT_ON_CLOSE);
+        setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
+        cggs = new ControlGraficoGrupoSanguineo(this);
+        addWindowListener(cggs);
 
         int[] personal = listadoPersonal();
         crearGrafico(personal);
@@ -76,14 +92,14 @@ public class GraficoGrupoSanguineo extends JFrame {
         }
 
         DefaultPieDataset data = new DefaultPieDataset();
-        data.setValue("A+: " + porcGrupoAP, porcGrupoAP);
-        data.setValue("O+: " + porcGrupoOP, porcGrupoOP);
-        data.setValue("B+: " + porcGrupoBP, porcGrupoBP);
-        data.setValue("AB+: " + porcGrupoABP, porcGrupoABP);
-        data.setValue("A-: " + porcGrupoAN, porcGrupoAN);
-        data.setValue("O-: " + porcGrupoON, porcGrupoON);
-        data.setValue("B-: " + porcGrupoBN, porcGrupoBN);
-        data.setValue("AB-: " + porcGrupoABN, porcGrupoABN);
+        data.setValue("A+: " + porcGrupoAP + "%", porcGrupoAP);
+        data.setValue("O+: " + porcGrupoOP + "%", porcGrupoOP);
+        data.setValue("B+: " + porcGrupoBP + "%", porcGrupoBP);
+        data.setValue("AB+: " + porcGrupoABP + "%", porcGrupoABP);
+        data.setValue("A-: " + porcGrupoAN + "%", porcGrupoAN);
+        data.setValue("O-: " + porcGrupoON + "%", porcGrupoON);
+        data.setValue("B-: " + porcGrupoBN + "%", porcGrupoBN);
+        data.setValue("AB-: " + porcGrupoABN + "%", porcGrupoABN);
 
         chart = ChartFactory.createPieChart3D(
                 "GRUPO SANGUINEO", // chart title
@@ -181,7 +197,7 @@ public class GraficoGrupoSanguineo extends JFrame {
         return personal;
     }
 
-    public static void main(final String[] args) {
+    /*public static void main(final String[] args) {
         GraficoGrupoSanguineo ggs = new GraficoGrupoSanguineo();
-    }
+    }*/
 }

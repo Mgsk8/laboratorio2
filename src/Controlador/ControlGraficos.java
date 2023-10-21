@@ -1,5 +1,5 @@
 /*
-Proposito: Gestiona las interacciones del usuario en el submenú listados.
+Proposito: Gestiona las interacciones del usuario en el submenú graficos.
 @author 
     Jhon Alex Rodríguez Benítez - 2264363
     Miguel Angel Escobar Marín - 2264305
@@ -17,82 +17,85 @@ import java.awt.event.WindowListener;
 
 import javax.swing.JOptionPane;
 
-import Vista.FormListadoEstadoxSanguineo;
-import Vista.FormListadoEstadoxUsuario;
-import Vista.ListadoGeneral;
-import Vista.Listados;
+import Vista.GraficoEstado;
+import Vista.GraficoGrupoSanguineo;
+import Vista.GraficoPersonal;
+import Vista.Graficos;
 
-public class ControlListados implements ActionListener, WindowListener{
-    
-    public Listados l;
+public class ControlGraficos implements ActionListener, WindowListener{
 
-    public ControlListados(Listados obj){
-        l = obj;
+    public Graficos g;
+
+    public ControlGraficos(Graficos obj){
+        g = obj;
     }
 
-    @Override
+     @Override
     public void actionPerformed(ActionEvent e) {
-        if(e.getSource().equals(l.jbListadoGeneral)){
-            ListadoGeneral lg = new ListadoGeneral(l);
-            l.setVisible(false);
-        }
-        if(e.getSource().equals(l.jbListadoEstadoxSanguineo)){
-            FormListadoEstadoxSanguineo fles = new FormListadoEstadoxSanguineo(l);
-            l.setVisible(false);
-        }
-        if(e.getSource().equals(l.jbListadoEstadoxTipo)){
-            FormListadoEstadoxUsuario fleu = new FormListadoEstadoxUsuario(l);
-            l.setVisible(false); 
-        }if(e.getSource().equals(l.jbVolver)){
+        if(e.getSource().equals(g.jbVolver)){
             volver();
         }
+        if(e.getSource().equals(g.jbGraficoEstado)){
+            GraficoEstado ge = new GraficoEstado(g);
+            g.setVisible(false);
+        }
+        if(e.getSource().equals(g.jbGraficoGrupo)){
+            GraficoGrupoSanguineo ggs = new GraficoGrupoSanguineo(g);
+            g.setVisible(false);
+        }
+        if(e.getSource().equals(g.jbGraficoPersonal)){
+            GraficoPersonal gp = new GraficoPersonal(g);
+            g.setVisible(false);
+        }
     }
+
     public void evento_salir(){
-       int respuesta = JOptionPane.showConfirmDialog(l,
+       int respuesta = JOptionPane.showConfirmDialog(g,
                "¿Desea salir de la aplicación?",
                "Confirmación", 
                JOptionPane.YES_NO_OPTION);
        if(respuesta == JOptionPane.YES_OPTION) System.exit(0);
     }
     public void volver(){
-        l.setVisible(false);
-        l.dispose();
-        l.mp.setVisible(true);
-    }  
+        g.setVisible(false);
+        g.dispose();
+        g.mp.setVisible(true);
+    }
+
 
     @Override
     public void windowOpened(WindowEvent e) {
-
+     
     }
 
     @Override
     public void windowClosing(WindowEvent e) {
-        evento_salir();
+         evento_salir();
     }
 
     @Override
     public void windowClosed(WindowEvent e) {
-
+         
     }
 
     @Override
     public void windowIconified(WindowEvent e) {
-
+         
     }
 
     @Override
     public void windowDeiconified(WindowEvent e) {
-
+         
     }
 
     @Override
     public void windowActivated(WindowEvent e) {
-
+         
     }
 
     @Override
     public void windowDeactivated(WindowEvent e) {
-
+         
     }
-
+    
 }

@@ -1,3 +1,15 @@
+/*
+Proposito: Muestra en pantalla 2 listas desplegables donde el ususario
+puede seleccionar 2 opciones entre estado del usuarios y el tipo de sangre
+con botones para consultar y volver al menú principal.
+@author 
+    Jhon Alex Rodríguez Benítez - 2264363
+    Miguel Angel Escobar Marín - 2264305
+    John Alejandro Vallarino Cruz - 2264332
+Fecha de ultima modificacion  20/10/2023
+version: 1.1
+*/
+
 package Vista;
 
 import java.awt.Color;
@@ -9,7 +21,6 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import Controlador.ControlFormListadoEstadoxSanguineo;
-import Utilerias.JButtonFuncion;
 import Utilerias.JButtonMenu;
 import Utilerias.JLabelTitulo;
 

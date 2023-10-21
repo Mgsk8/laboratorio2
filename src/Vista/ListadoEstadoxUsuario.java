@@ -1,3 +1,14 @@
+/*
+Proposito: Muestra en pantalla un lista con algunos datos de usuarios que coincidan con el Estado y
+tipo de usuario que el usuario selecciono anteriormente en el formulario.
+@author 
+    Jhon Alex Rodríguez Benítez - 2264363
+    Miguel Angel Escobar Marín - 2264305
+    John Alejandro Vallarino Cruz - 2264332
+Fecha de ultima modificacion  20/10/2023
+version: 1.1
+*/
+
 package Vista;
 
 import java.awt.Color;
@@ -93,7 +104,7 @@ public class ListadoEstadoxUsuario extends JFrame {
                 System.out.println("Grupo: " + Usuario_Buscar);
                 while ((linea = br.readLine()) != null) {
                     String tokens[] = linea.split(";");
-                    if (tokens[10].equals(Estado_Buscar) && tokens[9].equals(Usuario_Buscar)) {
+                    if (tokens[10].equals(Estado_Buscar) && tokens[3].equals(Usuario_Buscar)) {
                         //System.out.println("hello");
                         mt.addRow(tokens);
                     }else{

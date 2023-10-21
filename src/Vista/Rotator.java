@@ -1,3 +1,13 @@
+/*
+Proposito: clase que tiene como función darle el efecto rotatorio a las gráficas estadisticas. 
+@author 
+    Jhon Alex Rodríguez Benítez - 2264363
+    Miguel Angel Escobar Marín - 2264305
+    John Alejandro Vallarino Cruz - 2264332
+Fecha de ultima modificacion  20/10/2023
+version: 1.1
+*/
+
 package Vista;
 // ****************************************************************************
 // * JFREECHART DEVELOPER GUIDE                                               *

@@ -4,7 +4,7 @@ Proposito: Muestra información sobre los programadores
     Jhon Alex Rodríguez Benítez - 2264363
     Miguel Angel Escobar Marín - 2264305
     John Alejandro Vallarino Cruz - 2264332
-Fecha de ultima modificacion  03/01/2023
+Fecha de ultima modificacion  20/10/2023
 version: 1.1
 */
 
@@ -15,15 +15,11 @@ import Controlador.ControlAcercaDe;
 import Utilerias.JLabelTitulo;
 import java.awt.Cursor;
 import java.awt.Font;
-import java.awt.Image;
-import java.awt.event.ActionListener;
-import java.awt.event.WindowStateListener;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JLabel;
 import javax.swing.SwingConstants;
-import static javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE;
 
 public class AcercaDe extends JDialog{
     

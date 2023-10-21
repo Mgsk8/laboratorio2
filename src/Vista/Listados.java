@@ -1,13 +1,22 @@
+/*
+Proposito: Muestra en pantalla un submenú con botones que permiten ir a listados con
+información de los usuarios ya registrados.
+@author 
+    Jhon Alex Rodríguez Benítez - 2264363
+    Miguel Angel Escobar Marín - 2264305
+    John Alejandro Vallarino Cruz - 2264332
+Fecha de ultima modificacion  20/10/2023
+version: 1.1
+*/
+
 package Vista;
 
 import java.awt.Color;
-import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
-import Controlador.ControlConsultarUsuario;
 import Controlador.ControlListados;
 import Utilerias.JButtonFuncion;
 import Utilerias.JButtonMenu;

@@ -1,3 +1,13 @@
+/*
+Proposito: Gestiona las interacciones del usuario en la vista ventana login.
+@author 
+    Jhon Alex Rodríguez Benítez - 2264363
+    Miguel Angel Escobar Marín - 2264305
+    John Alejandro Vallarino Cruz - 2264332
+Fecha de ultima modificacion  20/10/2023
+version: 1.1
+*/
+
 package Controlador;
 
 import java.awt.event.ActionEvent;
@@ -22,7 +32,6 @@ public class ControlVentanaLogin implements ActionListener, WindowListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        // TODO Auto-generated method stub
         if (e.getSource().equals(vl.jtVer)) {
             evento_jtVer();
         }
@@ -67,9 +76,7 @@ public class ControlVentanaLogin implements ActionListener, WindowListener {
             try {
                 while ((linea = br.readLine()) != null) { // readLine() es un método utilizado para leer una línea de
                                                           // texto
-                    // System.out.println(linea);
                     tokens = linea.split(";");// divir los caracteres
-                    // System.out.println(tokens[0]);
                     if (tokens[0].equals(ced)) {
                         existe = true;
                         break; // romper el while, para que no siga buscando en el archivo
@@ -95,7 +102,6 @@ public class ControlVentanaLogin implements ActionListener, WindowListener {
         String passw = String.valueOf(caracteres);// Convertir el arreglo de char a String
         FileReader fr = null;// permite leer el archivo
         boolean error = false;
-        //boolean existe = false;
         try {
             fr = new FileReader("Usuarios.csv");
         } catch (Exception e) {
@@ -111,29 +117,31 @@ public class ControlVentanaLogin implements ActionListener, WindowListener {
             try {
                 while ((linea = br.readLine()) != null) { // readLine() es un método utilizado para leer una línea de
                                                           // texto
-                    // System.out.println(linea);
                     tokens = linea.split(";");// divir los caracteres
-                    // System.out.println(tokens[0]);
                     if (login.equals("") || passw.equals("")) {
                         JOptionPane.showMessageDialog(vl, "Login y/o password no pueden ser vacios");
                         existe = true;
                         break;
+                    } else if (login.equals("admin") && passw.equals("admin")) {
+                        existe = true;
+                        vl.setVisible(false);
+                        vl.dispose();
+                        MenuPrincipal mp = new MenuPrincipal();
+                        break;
                     } else {
                         if (login.equals(tokens[8]) && passw.equals(tokens[9])) {
-                            // JOptionPane.showMessageDialog(vl, "Ingreso Correcto");
                             existe = true;
                             vl.setVisible(false);
                             vl.dispose();
-                            // vl.mp.setVisible(true);
                             MenuPrincipal mp = new MenuPrincipal();
                             break;
-                        } 
+                        }
                     }
 
                 } // fin while
                 if (!existe) {
                     JOptionPane.showMessageDialog(vl, "Ingreso Incorrecto. Login y/o password incorrectos",
-                                    "Error",JOptionPane.WARNING_MESSAGE);
+                            "Error", JOptionPane.WARNING_MESSAGE);
                 }
             } catch (Exception e) {
                 JOptionPane.showMessageDialog(null,
@@ -147,20 +155,6 @@ public class ControlVentanaLogin implements ActionListener, WindowListener {
             }
         }
 
-        /*if (login.equals("") || passw.equals("")) {
-            JOptionPane.showMessageDialog(vl, "Login y/o password no pueden ser vacios");
-        } else {
-            if (login.equals("admin") && passw.equals("admin")) {
-                // JOptionPane.showMessageDialog(vl, "Ingreso Correcto");
-                vl.setVisible(false);
-                vl.dispose();
-                // vl.mp.setVisible(true);
-                MenuPrincipal mp = new MenuPrincipal();
-            } else {
-                JOptionPane.showMessageDialog(vl, "Ingreso Incorrecto. Login y/o password incorrectos", "Error",
-                        JOptionPane.WARNING_MESSAGE);
-            }
-        }*/
     }
 
     public void evento_salir() {
@@ -174,43 +168,36 @@ public class ControlVentanaLogin implements ActionListener, WindowListener {
 
     @Override
     public void windowOpened(WindowEvent e) {
-        // TODO Auto-generated method stub
 
     }
 
     @Override
     public void windowClosing(WindowEvent e) {
-        // TODO Auto-generated method stub
         evento_salir();
     }
 
     @Override
     public void windowClosed(WindowEvent e) {
-        // TODO Auto-generated method stub
 
     }
 
     @Override
     public void windowIconified(WindowEvent e) {
-        // TODO Auto-generated method stub
 
     }
 
     @Override
     public void windowDeiconified(WindowEvent e) {
-        // TODO Auto-generated method stub
 
     }
 
     @Override
     public void windowActivated(WindowEvent e) {
-        // TODO Auto-generated method stub
 
     }
 
     @Override
     public void windowDeactivated(WindowEvent e) {
-        // TODO Auto-generated method stub
 
     }
 

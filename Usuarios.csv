@@ -1,2 +1,4 @@
-123;miguel;escobar;Administrador;A+;17;1;2004;maem1704@gmail.com;12345;Activo
+0;Admin;Admin;Administrador;A+;17;1;2004;admin;admin;Activo
+123;miguel;escobar;Administrador;A+;17;1;2004;maem1704@gmail.com;12345;Inactivo
 1345;luisa;marin;Cliente;A+;1;1;2018;luisa@gmail.com;123456;Activo
+66666;Jhon;Gomez;Entrenador;B+;1;3;2019;Gomez@gmail.com;miguel;Activo

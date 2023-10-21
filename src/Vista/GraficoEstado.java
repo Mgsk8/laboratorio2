@@ -1,3 +1,14 @@
+/*
+Proposito: Muestra en pantalla un gráfico circular o de torta rotatorio donde
+se muestran los porcentajes de los usuario activos e inactivos.
+@author 
+    Jhon Alex Rodríguez Benítez - 2264363
+    Miguel Angel Escobar Marín - 2264305
+    John Alejandro Vallarino Cruz - 2264332
+Fecha de ultima modificacion  20/10/2023
+version: 1.1
+*/
+
 package Vista;
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartPanel;
@@ -5,10 +16,9 @@ import org.jfree.chart.JFreeChart;
 import org.jfree.chart.plot.PiePlot3D;
 import org.jfree.data.general.DefaultPieDataset;
 
-
+import Controlador.ControlGraficoEstado;
 import java.awt.Color;
 import java.io.BufferedReader;
-import java.io.File;
 import java.io.FileReader;
 
 import javax.swing.JFrame;
@@ -17,14 +27,20 @@ import javax.swing.JOptionPane;
 public class GraficoEstado extends JFrame {
 
     JFreeChart chart;
+    public Graficos g;
+    public ControlGraficoEstado cge;
 
-    public GraficoEstado() {
+    public GraficoEstado(Graficos obj) {
         super("ESTADO USUARIOS");
+        g = obj;
         setSize(800, 600);
         setLayout(null);
         setResizable(false);
         setLocationRelativeTo(null);
-        setDefaultCloseOperation(EXIT_ON_CLOSE);
+        setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
+        cge = new ControlGraficoEstado(this);
+        addWindowListener(cge);
+
 
         int[] personal = listadoPersonal();
         crearGrafico(personal);
@@ -53,8 +69,8 @@ public class GraficoEstado extends JFrame {
         }
 
         DefaultPieDataset data = new DefaultPieDataset();
-        data.setValue("Activos: " + porcActivo, porcActivo);
-        data.setValue("Inactivos: " + porcInactivo, porcInactivo);
+        data.setValue("Activos: " + porcActivo + "%", porcActivo);
+        data.setValue("Inactivos: " + porcInactivo + "%", porcInactivo);
 
         chart = ChartFactory.createPieChart3D(
                 "ESTADO", // chart title
@@ -122,7 +138,7 @@ public class GraficoEstado extends JFrame {
         return personal;
     }
 
-    public static void main(final String[] args) {
+    /*public static void main(final String[] args) {
         GraficoEstado ge = new GraficoEstado();
-    }
+    }*/
 }

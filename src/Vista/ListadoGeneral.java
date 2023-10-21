@@ -1,3 +1,13 @@
+/*
+Proposito: Muestra en pantalla un lista con algunos datos de usuarios de todos los usuarios que hay en el momento.
+@author 
+    Jhon Alex Rodríguez Benítez - 2264363
+    Miguel Angel Escobar Marín - 2264305
+    John Alejandro Vallarino Cruz - 2264332
+Fecha de ultima modificacion  20/10/2023
+version: 1.1
+*/
+
 package Vista;
 
 import java.awt.Color;
@@ -10,13 +20,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
-import javax.swing.SwingConstants;
-import javax.swing.table.DefaultTableCellRenderer;
-import javax.swing.table.TableColumn;
-
-import Controlador.ControlCrearUsuario;
 import Controlador.ControlListadoGeneral;
-import Controlador.ControlListados;
 import Utilerias.JButtonFuncion;
 import Utilerias.JLabelTitulo;
 

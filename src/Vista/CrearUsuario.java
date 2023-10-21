@@ -1,11 +1,12 @@
 /*
-Proposito: Muestra en pantalla multiples campos para la creación de usuarios, con botones para guardar, limpiar y volver al menú principal.
+Proposito: Muestra en pantalla multiples campos para la creación de usuarios, con botones para guardar,
+limpiar y volver al menú principal.
 @author 
     Jhon Alex Rodríguez Benítez - 2264363
     Miguel Angel Escobar Marín - 2264305
     John Alejandro Vallarino Cruz - 2264332
-Fecha de ultima modificacion  26/09/2023
-version: 1.0
+Fecha de ultima modificacion  20/10/2023
+version: 1.1
 */
 
 package Vista;
@@ -16,24 +17,22 @@ import Utilerias.JLabelTitulo;
 import Utilerias.LimitadorCaracteres;
 
 import java.awt.Color;
-import java.awt.Cursor;
 import java.util.Calendar;
-import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JPasswordField;
 import javax.swing.JTextField;
-import javax.swing.SwingConstants;
-import static javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE;
 
 
 public class CrearUsuario extends JFrame{
     
     public JButton jbVolver, jbGuardar, jbLimpiar;
     public MenuPrincipal mp;
-    public JTextField jtCedula, jtNom, jtApe, jtEmail, jtPassword;
+    public JTextField jtCedula, jtNom, jtApe, jtEmail;
+    public JPasswordField jpPassword;
     public JComboBox<String> jcDia, jcMes, jcYear, jcTipoUsuario, jcGrupoSanguineo;
     public int yearActual = Calendar.getInstance().get(Calendar.YEAR);
     //public int yearActual = c1.get(Calendar.YEAR);
@@ -106,9 +105,9 @@ public class CrearUsuario extends JFrame{
         jlPassword.setBounds(40, 310, 120, 30);
         jp.add(jlPassword);
 
-        jtPassword = new JTextField();
-        jtPassword.setBounds(130, 310, 200, 30);
-        jp.add(jtPassword);
+        jpPassword = new JPasswordField();
+        jpPassword.setBounds(130, 310, 200, 30);
+        jp.add(jpPassword);
         
         JLabel jlTipoUsario = new JLabel("Tipo de usuario:");
         jlTipoUsario.setBounds(370, 110, 150, 30);

@@ -1,26 +1,24 @@
 /*
-Proposito: Permite buscar un usuario y muestra en pantalla sus campos para la visualización de los datos del usuario, con botones para buscar, limpiar y volver al menú principal.
+Proposito: Permite buscar un usuario y muestra en pantalla sus campos para la visualización de los datos del
+usuario, con botones para buscar, limpiar y volver al menú principal.
 @author 
     Jhon Alex Rodríguez Benítez - 2264363
     Miguel Angel Escobar Marín - 2264305
     John Alejandro Vallarino Cruz - 2264332
-Fecha de ultima modificacion  03/01/2023
+Fecha de ultima modificacion  20/10/2023
 version: 1.1
 */
 
 package Vista;
 
 import Controlador.ControlConsultarUsuario;
-import Controlador.ControlCrearUsuario;
 import Utilerias.JButtonFuncion;
 import Utilerias.JLabelTitulo;
 import Utilerias.LimitadorCaracteres;
 
 import java.awt.Color;
-import java.awt.Cursor;
 import java.util.Calendar;
 import javax.swing.ButtonGroup;
-import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
@@ -28,9 +26,6 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 import javax.swing.JTextField;
-import javax.swing.SwingConstants;
-import static javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE;
-
 
 public class ConsultarUsuario extends JFrame{
     

@@ -1,12 +1,19 @@
+/*
+Proposito: Muestra en pantalla un login donde el usuario deberá ingresar su correo y constraseña para poder
+ingresar a la aplicación con 2 botones de cancelar e ingresar. 
+@author 
+    Jhon Alex Rodríguez Benítez - 2264363
+    Miguel Angel Escobar Marín - 2264305
+    John Alejandro Vallarino Cruz - 2264332
+Fecha de ultima modificacion  20/10/2023
+version: 1.1
+*/
+
 package Vista;
 
 import java.awt.Color;
 import java.awt.Font;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.awt.event.WindowListener;
-
-import javax.naming.ldap.Control;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -27,7 +34,6 @@ public class VentanaLogin extends JFrame{
     public JButton jbCancelar, jbingresar;
     public ImageIcon ver, no_ver;
     ControlVentanaLogin cvl;
-    //public MenuPrincipal mp;
 
     public VentanaLogin(){
         super("Ingreso al sistema");
@@ -40,20 +46,19 @@ public class VentanaLogin extends JFrame{
         cvl = new ControlVentanaLogin(this);
         addWindowListener((WindowListener) cvl);
         setVisible(true);
+        JOptionPane.showMessageDialog(this, "Usuario por defecto: admin \nPassword por defecto: admin");
     }
     private void crerGUI() {
         ControlVentanaLogin cvl = new ControlVentanaLogin(this);
-
         ImageIcon im = new ImageIcon(getClass().getResource("/Imagenes/login.png"));
         JLabel jlTitulo = new JLabel("Ingreso al sistema", im, JLabel.CENTER);
         jlTitulo.setBounds(0, 0, 400, 75);
         jlTitulo.setOpaque(true);
         jlTitulo.setBackground(Color.white);
         jlTitulo.setFont(new Font("Tahoma", Font.BOLD, 25));
-        //jlTitulo.setHorizontalAlignment(JLabel.CENTER);
         add(jlTitulo);
 
-        JLabel jlLogin = new JLabel("Login");
+        JLabel jlLogin = new JLabel("Correo");
         jlLogin.setBounds(10, 90, 100, 30);
         jlLogin.setHorizontalAlignment(JLabel.RIGHT);
         add(jlLogin);
@@ -95,6 +100,7 @@ public class VentanaLogin extends JFrame{
         jbingresar.addActionListener(cvl);
         jbingresar.setMnemonic('I');
         add(jbingresar);
+
     }
     public static void main(String[] args) {
         VentanaLogin vl = new VentanaLogin();

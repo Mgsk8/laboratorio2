@@ -1,20 +1,26 @@
+/*
+Proposito: Muestra en pantalla un lista con algunos datos de usuarios que coincidan con el Estado y
+grupo sanguineo que el usuario selecciono anteriormente en el formulario.
+@author 
+    Jhon Alex Rodríguez Benítez - 2264363
+    Miguel Angel Escobar Marín - 2264305
+    John Alejandro Vallarino Cruz - 2264332
+Fecha de ultima modificacion  20/10/2023
+version: 1.1
+*/
+
 package Vista;
 
 import java.awt.Color;
 import java.io.BufferedReader;
 import java.io.FileReader;
-import java.util.ArrayList;
-
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
-
-import Controlador.ControlFormListadoEstadoxSanguineo;
 import Controlador.ControlListadoEstadoxSanguineo;
-import Controlador.ControlListadoGeneral;
 import Utilerias.JButtonFuncion;
 import Utilerias.JLabelTitulo;
 
@@ -100,7 +106,7 @@ public class ListadoEstadoxSanguineo extends JFrame{
             System.out.println("Grupo: " + Grupo_Buscar); 
                 while((linea = br.readLine()) != null){
                     String tokens [] = linea.split(";");
-                    if(tokens[10].equals(Estado_Buscar) && tokens[8].equals(Grupo_Buscar)){
+                    if(tokens[10].equals(Estado_Buscar) && tokens[4].equals(Grupo_Buscar)){
                         mt.addRow(tokens);
                     }
                 }

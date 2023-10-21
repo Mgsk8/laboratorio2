@@ -4,7 +4,7 @@ Proposito: Nos permite controlar la acciones de la vista menu principal
     Jhon Alex Rodríguez Benítez - 2264363
     Miguel Angel Escobar Marín - 2264305
     John Alejandro Vallarino Cruz - 2264332
-Fecha de ultima modificacion  03/01/2023
+    Fecha de ultima modificacion  20/10/2023
 version: 1.1
 */
 package Controlador;
@@ -13,6 +13,7 @@ import Vista.AcercaDe;
 import Vista.ActualizarUsuario;
 import Vista.ConsultarUsuario;
 import Vista.CrearUsuario;
+import Vista.Graficos;
 import Vista.Listados;
 
 import java.awt.event.ActionEvent;
@@ -54,6 +55,11 @@ public class ControlMenuPrincipal implements ActionListener, WindowListener {
         if (e.getSource().equals(mp.jbActualizar)) {
             // System.out.println("Clic en jbGrafica");
             ActualizarUsuario au = new ActualizarUsuario(mp);
+            mp.setVisible(false);
+        }
+        if (e.getSource().equals(mp.jbEstadistica)) {
+            // System.out.println("Clic en jbGrafica");
+           Graficos g = new Graficos(mp);
             mp.setVisible(false);
         }
     }

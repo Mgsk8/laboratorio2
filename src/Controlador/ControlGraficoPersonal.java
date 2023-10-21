@@ -1,5 +1,5 @@
 /*
-Proposito: Gestiona las interacciones del usuario en la vista listado General.
+Proposito: Gestiona las interacciones del usuario en la vista grafico personal.
 @author 
     Jhon Alex Rodríguez Benítez - 2264363
     Miguel Angel Escobar Marín - 2264305
@@ -15,31 +15,24 @@ import java.awt.event.ActionListener;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
 
-import javax.swing.JOptionPane;
+import Vista.GraficoPersonal;
 
-import Vista.ListadoGeneral;
-
-public class ControlListadoGeneral implements ActionListener, WindowListener{
+public class ControlGraficoPersonal implements WindowListener, ActionListener{
     
-    public ListadoGeneral lg;
+    public GraficoPersonal gp;
 
-    public ControlListadoGeneral(ListadoGeneral obj){
-        lg = obj;
+    public ControlGraficoPersonal(GraficoPersonal obj){
+        gp = obj;
     }
 
-    public void evento_salir(){
-       int respuesta = JOptionPane.showConfirmDialog(lg,
-               "¿Desea salir de la aplicación?",
-               "Confirmación", 
-               JOptionPane.YES_NO_OPTION);
-       if(respuesta == JOptionPane.YES_OPTION) System.exit(0);
+    public void volver(){
+        gp.setVisible(false);
+        gp.dispose();
+        gp.g.setVisible(true);
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        if(e.getSource().equals(lg.jbVolver)){
-            volver();
-        } 
     }
 
     @Override
@@ -47,40 +40,34 @@ public class ControlListadoGeneral implements ActionListener, WindowListener{
         
     }
 
-    public void volver(){
-        lg.setVisible(false);
-        lg.dispose();
-        lg.l.setVisible(true);
-    }
-
     @Override
     public void windowClosing(WindowEvent e) {
-        evento_salir();
+        volver();
     }
 
     @Override
     public void windowClosed(WindowEvent e) {
-
+        
     }
 
     @Override
     public void windowIconified(WindowEvent e) {
-
+         
     }
 
     @Override
     public void windowDeiconified(WindowEvent e) {
-
+      
     }
 
     @Override
     public void windowActivated(WindowEvent e) {
-
+    
     }
 
     @Override
     public void windowDeactivated(WindowEvent e) {
-
+        
     }
 
 }
