@@ -152,25 +152,25 @@ public class GraficoGrupoSanguineo extends JFrame {
                     if(tokens[4].equals("A+")){
                         contadorGruAP = contadorGruAP + 1;
                     }
-                    if(tokens[4].equals("Activo")){
+                    if(tokens[4].equals("O+")){
                         contadorGruOP = contadorGruOP + 1;
                     }
-                    if(tokens[4].equals("Activo")){
+                    if(tokens[4].equals("B+")){
                         contadorGruBP = contadorGruBP + 1;
                     }
-                    if(tokens[4].equals("Activo")){
+                    if(tokens[4].equals("AB+")){
                         contadorGruABP = contadorGruABP + 1;
                     }
-                    if(tokens[4].equals("Activo")){
+                    if(tokens[4].equals("A-")){
                         contadorGruAN = contadorGruAN + 1;
                     }
-                    if(tokens[4].equals("Activo")){
+                    if(tokens[4].equals("O-")){
                         contadorGruON = contadorGruON + 1;
                     }
-                    if(tokens[4].equals("Activo")){
+                    if(tokens[4].equals("B-")){
                         contadorGruBN = contadorGruBN + 1;
                     }
-                    if(tokens[4].equals("Activo")){
+                    if(tokens[4].equals("AB-")){
                         contadorGruABN = contadorGruABN + 1;
                     }
                 }
